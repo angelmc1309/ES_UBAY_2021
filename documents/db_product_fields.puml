@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+
+class product {
+  #id : Integer
+  name: String
+  inventorystatus : String
+  price : Float
+  description : String
+  rating : Float
+  category : String
+  quantity : Integer
+  code : String
+  image: String
+}
+@enduml
+class product{
+db.Integer: id = db.Column(db.Integer, primary_key=True, nullable=False)
+    name = db.Column(db.String(30), nullable=False)
+    inventorystatus = db.Column(db.String(30), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    description = db.Column(db.String(60))
+    rating = db.Column(db.Float)
+    category = db.Column(db.String(30), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    code = db.Column(db.String(30))
+    image=db.Column(db.String(50))
+    }
+@enduml

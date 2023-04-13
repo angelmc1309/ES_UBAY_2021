@@ -1,0 +1,187 @@
+<div class="container">
+  <div class="table-info content-section implementation">
+    <div class="card">
+      <p-table responsiveLayout="scroll" [value]="productsCart">
+        <ng-template pTemplate="caption">
+          <div class="container">
+            <p>Products</p>
+            <button
+              pButton
+              type="button"
+              (click)="removeAll()"
+              label="Borrar Todo"
+              class="p-button-danger"
+              icon="pi pi-times"
+              iconPos="right"
+            ></button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>Preview</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Candidad</th>
+            <th>Accion</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+          <tr>
+            <td style="text-align: center; border: hidden">
+              <img
+                class="image"
+                [src]="'assets/product/' + getImage(product)"
+                [alt]="'image'"
+              />
+            </td>
+            <td style="font-size: 20px; text-align: center; border: hidden">
+              {{ product.name }}
+            </td>
+            <td style="font-size: 20px; text-align: center; border: hidden">
+              {{ product.price | currency: "EUR":true }}
+            </td>
+            <td style="text-align: center; border: hidden">
+              <p-inputNumber
+                [(ngModel)]="product.selection"
+                (ngModelChange)="updateSelection($event, product.id)"
+                [showButtons]="true"
+                [min]="0"
+                [max]="product.quantity"
+              ></p-inputNumber>
+            </td>
+            <td style="text-align: center; border: hidden">
+              <button
+                pButton
+                type="button"
+                (click)="removeItem(product.id)"
+                label="Delete"
+                class="p-button-danger"
+                icon="pi pi-times"
+                iconPos="right"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="buy">
+    <p-card>
+      <div class="container2">
+        <button pButton icon="pi pi-shopping-cart" (click)="confirmarCompra()">
+          Confirmar compra
+        </button>
+        <div class="product-price">
+          <h1>{{ total_price | currency: "EUR":true }}</h1>
+        </div>
+        <div class="product-status">
+          <p>
+            Amount of items
+            <br />
+            {{ total }}
+          </p>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
+<p-dialog header="Title" [(visible)]="visible">
+  <form>
+    <label>Nombre del Titular</label>
+    <br />
+    <input pInputText="name" />
+    <br /><br />
+    <label>Numero de Tarjeta</label>
+    <br />
+    <input pInputNumber="id" />
+    <br /><br />
+    <label>Fecha de Caducidad</label>
+    <br />
+    <input pInputText="fecha" />
+    <br /><br />
+    <label>CVV</label>
+    <br />
+    <input pInputNumber="cvv" />
+  </form>
+  <br />
+  <br />
+  <p-button
+    icon="pi pi-shopping-cart"
+    label="Pagar y finalizar"
+    class="p-button-lg"
+    (click)="pay()"
+  ></p-button>
+</p-dialog>
+
+<!-- <div class="container-max">
+    <p-table [value]="productsCart" [resizableColumns]="true" [autoLayout]="true" [resizableColumns]="true" >
+      <ng-template pTemplate="caption">
+          <div class="container">
+              <div style="font-size: 30px">Products</div>
+            <button pButton type="button" (click)="removeAll()" label="Borrar Todo" style="float: right;margin-left: auto" class="p-button-danger" icon="pi pi-times" iconPos="right"></button>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width:100px; text-align: center; border-right-style: hidden;">Preview</th>
+              <th style="width:100px; text-align: center; border-right-style: hidden;">Name</th>
+              <th style="width:100px; text-align: center; border-right-style: hidden;">Price</th>
+              <th style="width:100px; text-align: center; border-right-style: hidden;">Cantidad</th>
+              <th style="width:100px; text-align: center; border-right-style: hidden;">Accion</th>
+          </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-product >
+          <tr>
+              <td style="text-align: center; border: hidden"><img class="image" [src]="'assets/product/'+getImage(product)" [alt]="'image'"/></td>
+              <td style="font-size: 20px; text-align: center; border: hidden">{{product.name}}</td>
+              <td style="font-size: 20px; text-align: center; border: hidden">{{product.price|currency:'EUR':true}}</td>
+              <td style="text-align: center; border: hidden">
+                <p-inputNumber [(ngModel)]="product.selection" (ngModelChange)=updateSelection($event,product.id) [showButtons]="true" [min]="0" [max]=product.quantity></p-inputNumber>
+              </td>
+              <td style="text-align: center; border: hidden"><button pButton type="button" (click)="removeItem(product.id)" label="Delete" class="p-button-danger" icon="pi pi-times" iconPos="right"></button></td>
+          </tr>
+      </ng-template>
+    </p-table>
+
+</div>
+
+<div class="buy">
+  <p-card>
+                <div class="container2" style="margin-top:50px" >
+
+                    <p-button icon="pi pi-shopping-cart" label="Confirmar Compra" class="p-button-lg" (click)="confirmarCompra()">
+                    </p-button>
+                    <div class="product-price">
+                        <h1>{{total_price|currency:'EUR':true}}</h1>
+                    </div>
+                    <div class="product-status">
+                        <p style="font-size: 20px">Amount of items
+                          <br>
+                        {{total}}</p>
+                    </div>
+                </div>
+            </p-card>
+</div>
+<p-dialog header="Title" [(visible)]="visible">
+    <form>
+        <label>Nombre del Titular</label>
+        <br>
+        <input pInputText ="name">
+        <br><br>
+        <label>Numero de Tarjeta</label>
+        <br>
+        <input pInputNumber ="id">
+        <br><br>
+        <label>Fecha de Caducidad</label>
+        <br>
+        <input pInputText="fecha">
+        <br><br>
+        <label>CVV</label>
+        <br>
+        <input pInputNumber="cvv">
+    </form>
+    <br>
+    <br>
+    <p-button icon="pi pi-shopping-cart" label="Pagar y finalizar" class="p-button-lg" (click)="pay()"></p-button>
+</p-dialog> -->

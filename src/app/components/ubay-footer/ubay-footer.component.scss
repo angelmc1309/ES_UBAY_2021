@@ -1,0 +1,16 @@
+.ubay-footer{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    height: 2.5rem;
+    left:0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    z-index: 9999999;
+    &__text {
+        float: right;
+        padding-top: 0.5rem;
+        padding-right: 0.5rem;
+    }    
+}

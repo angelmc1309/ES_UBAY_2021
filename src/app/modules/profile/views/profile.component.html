@@ -1,0 +1,196 @@
+<div class="container">
+  <h2>Tu zona</h2>
+  <mat-tab-group mat-stretch-tabs class="tabs">
+    <mat-tab label="Perfil">
+      <div class="form">
+        <form [formGroup]="newUserForm">
+          <label>Username</label>
+          <input
+            [readonly]="true"
+            pInputText
+            formControlName="username"
+            type="username"
+          />
+          <label>Nombre</label>
+          <input [readonly]="modify" pInputText formControlName="name" />
+          <label>Apellidos</label>
+          <input [readonly]="modify" pInputText formControlName="surname" />
+          <label>Direccion</label>
+          <input [readonly]="modify" pInputText formControlName="direction" />
+          <label>Código Postal</label>
+          <input [readonly]="modify" pInputText formControlName="cp" />
+          <label>Población</label>
+          <input [readonly]="modify" pInputText formControlName="city" />
+          <label>Municipio</label>
+          <input [readonly]="modify" pInputText formControlName="province" />
+          <label>País</label>
+          <input [readonly]="modify" pInputText formControlName="country" />
+          <label>Correo electrónico</label>
+          <input
+            [readonly]="modify"
+            pInputText
+            formControlName="email"
+            type="email"
+          />
+
+          <label *ngIf="!modify">Nueva Contraseña (Opcional)</label>
+          <input
+            *ngIf="!modify"
+            [readonly]="modify"
+            pInputText
+            formControlName="passwordNew"
+            type="password"
+          />
+        </form>
+      </div>
+      <button pButton class="test" *ngIf="modify" (click)="editProfileToggle()">
+        Editar perfil
+      </button>
+      <button pButton class="test" *ngIf="!modify" (click)="changeVisible()">
+        Actualizar perfil
+      </button>
+      <br /><br />
+      <button
+        pButton
+        class="test"
+        *ngIf="!modify"
+        (click)="editProfileToggle()"
+      >
+        Cancelar Edicion
+      </button>
+    </mat-tab>
+    <mat-tab label="Productos">
+      <div class="productsList">
+        <br />
+        <div class="button">
+          <button pButton (click)="addNewItem()">Añadir producto</button>
+        </div>
+        <br />
+        <div *ngIf="biggerThanZero(getItemAmount()); else elseBlock">
+          <div class="content-section implementation">
+            <p-dataView #dv [value]="userItems">
+              <ng-template let-product pTemplate="listItem">
+                <div class="col-3 xs-12">
+                  <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                      <div>
+                        <span class="product-category">{{
+                          product.category
+                        }}</span>
+                      </div>
+                      <div>
+                        <button
+                          pButton
+                          pRipple
+                          type="button"
+                          icon="pi pi-times"
+                          class="p-button-rounded p-button-danger"
+                          (click)="deleteProduct(product)"
+                        ></button>
+                      </div>
+                    </div>
+                    <div
+                      class="product-grid-item-content"
+                      (click)="productInformationShow(product)"
+                    >
+                      <img
+                        [src]="'assets/product/' + getImage(product)"
+                        [alt]="product.name"
+                      />
+                      <div class="product-name">{{ product.name }}</div>
+                      <div class="product-description">
+                        {{ product.description }}
+                      </div>
+                      <p-rating
+                        [ngModel]="product.rating"
+                        [readonly]="true"
+                        [cancel]="false"
+                      ></p-rating>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                      <span class="product-price">${{ product.price }}</span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </p-dataView>
+          </div>
+        </div>
+        <ng-template #elseBlock
+          ><br />No has añadido ningún producto.</ng-template
+        >
+      </div>
+    </mat-tab>
+    <mat-tab label="Comprados">
+      <div class="productsList">
+        <div class="content-section implementation">
+          <p-dataView #dv [value]="userBoughtItems">
+            <ng-template let-product pTemplate="listItem">
+              <div class="col-3 xs-12">
+                <div
+                  class="product-grid-item card"
+                  (click)="productInformationShow(product)"
+                >
+                  <div class="product-grid-item-top">
+                    <div>
+                      <span class="product-category"
+                        >Categoria: {{ product.category }}</span
+                      >
+                    </div>
+                    <span
+                      [class]="
+                        'product-badge status-' +
+                        product.inventorystatus.toLowerCase()
+                      "
+                      >{{ product.inventorystatus }}</span
+                    >
+                  </div>
+                  <div class="product-grid-item-content">
+                    <img
+                      [src]="'assets/product/' + getImage(product)"
+                      [alt]="product.name"
+                    />
+                    <div class="product-name">{{ product.name }}</div>
+                    <div class="product-description">
+                      {{ product.description }}
+                    </div>
+                    <p-rating
+                      [ngModel]="product.rating"
+                      [readonly]="true"
+                      [cancel]="false"
+                    ></p-rating>
+                  </div>
+                  <div class="product-grid-item-bottom">
+                    <span class="product-price">${{ product.price }}</span>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-dataView>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<p-dialog header="Introduce la contraseña" [(visible)]="visible">
+  <form [formGroup]="newUserForm">
+    <label>Contraseña Actual</label><br />
+    <input
+      [readonly]="modify"
+      pInputText
+      formControlName="password"
+      type="password"
+    /><br /><br />
+    <label>Repite la contraseña</label><br />
+    <input
+      [readonly]="modify"
+      pInputText
+      formControlName="passwordRepeat"
+      type="password"
+    /><br /><br />
+  </form>
+  <br />
+  <br />
+  <button pButton (click)="editProfile()">Actualizar perfil</button>
+</p-dialog>

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+img{
+    height: 30em;
+}
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+.card{
+    padding:5rem;
+}
+.p-card .p-card-body {
+    padding:0;
+}
+:host ::ng-deep .p-card .p-card-content {
+    height: 33em;
+}
+.loginFormCol{
+    background-color: var(--light-color);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    .register{
+        border: none;
+        background: none !important;
+        color: blue;
+        &:hover{
+            cursor: pointer !important;
+        }
+    }
+    label{
+        color: rgb(153, 153, 153)
+    }
+    input{
+        border-radius: 1rem;
+    }
+    *:not(button){
+        margin-bottom: 1.5em;
+        width: 100%;
+        &:last-child{
+            margin-bottom: 1em;  
+        }
+    }
+}
+
+.imgShaped{
+    align-items: stretch;
+    height: auto;
+    background-color: var(--light-color);
+    margin-bottom: 9em;
+    .text{
+        padding: 2em;
+    }
+}
+.secondImg{
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: url('./../../../../assets/lucrezia-carnelos-wQ9VuP_Njr4-unsplash.jpg');
+    width: 100%;
+    height: 30em;
+    min-height: 460px;
+}

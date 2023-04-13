@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+.index{
+    background-image: url('./../../../../assets/parallax.jpg');
+}
+.secondImg{
+    background-position: 50% 50%;
+    background-size: cover;
+    background-image: url('./../../../../assets/jess-harper-sunday-pFNj9p_m534-unsplash.jpg');
+    width: 100%;
+    height: 30em;
+    min-height: 460px;
+}
+.parallax {
+    height: 20em;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:0;
+    position:relative;
+    margin-bottom: 6em;
+  }
+.container{
+    padding: 2em;
+    h2{
+        text-align: center;
+    }
+    .card {
+        padding: 1em;
+    }
+    .right{
+        float:right;
+        border:1px solid red;
+    }
+}
+.crop {
+    position: relative;
+    z-index: 0;
+    .exploreImgProducts{
+        background-image: url('./../../../../assets/parallax-effect-img.jpg');
+        width: 100%;
+        height: 30em;
+        object-fit: cover;
+        background-size: cover;
+    }
+}
+
+.product-badge {
+    border-radius: 2px;
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+.product-badge.status-instock {
+    background: #c8e6c9;
+    color: #256029;
+}
+.product-badge.status-lowstock {
+    background: #feedaf;
+    color: #8a5340;
+}
+.product-badge.status-outofstock {
+    background: #ffcdd2;
+    color: #c63737;
+}
+.carousel{
+    .product-item {
+        .product-item-content {
+            border: 1px solid var(--surface-d);
+            border-radius: 3px;
+            margin: .3rem;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    
+        .product-image {
+            width: 50%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+        }
+        .car-buttons{
+            margin-top:2em;
+        }
+    }
+}
+:host ::ng-deep {
+    .imgShaped{
+        .col-8{
+            padding: 0;
+        }
+    }
+    .p-dataview .p-paginator-bottom {
+        margin-top: 2em;
+        border-width: 0 1px 1px 1px;
+        border-radius: 0;
+    }
+    .p-dropdown {
+        width: 14rem;
+        font-weight: normal;
+    }
+    .product-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .product-description {
+        margin: 0 0 1rem 0;
+    }
+    
+    .product-category-icon {
+        vertical-align: middle;
+        margin-right: .5rem;
+    }
+    
+    .product-category {
+        font-weight: 600;
+        vertical-align: middle;
+    }
+    
+    .product-grid-item {
+        margin: .5em;
+        border: 1px solid var(--surface-d);
+    
+        .product-grid-item-top,
+        .product-grid-item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        img {
+            width: 75%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin: 2rem 0;
+        }
+    
+        .product-grid-item-content {
+            text-align: center;
+        }
+    
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 576px) {
+	:host ::ng-deep .product-list-item {
+		flex-direction: column;
+		align-items: center;
+
+		img {
+			width: 75%;
+			margin: 2rem 0;
+		}
+
+		.product-list-detail {
+			text-align: center;
+		}
+
+		.product-price {
+			align-self: center;
+		}
+
+		.product-list-action {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.product-list-action {
+			margin-top: 2rem;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+		}
+	}
+}
+@media screen and (max-width:600px) {
+    h3{
+		font-size: 0.5em;
+	}
+	.crop{
+        button {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            font-size: 1em;
+            padding: 1em;
+            border: none;
+            cursor: pointer;
+            background-color: var(--light-color);
+        }
+	}
+    .customize{
+        .card{ 
+            img{
+                width: 100%;
+                height: 10em;
+                object-fit: cover;
+            } 
+        }
+    }
+    .parallax {
+        height: 20em; 
+        *{
+            font-size: 1em;
+        }
+      }
+	
+}

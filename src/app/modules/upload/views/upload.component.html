@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Poner a la venta un producto</h2>
+    <div class="form">
+        <form [formGroup]="newProdForm">
+            <label>Nombre del producto</label>
+            <input pInputText formControlName="name">
+            <label>Cantidad que quieres vender</label>
+            <input pInputNumber type="number" formControlName="quantity">
+            <label>Precio</label>
+            <input pInputNumber type="number" formControlName="price">
+            <label>Categorias</label>
+            <input pInputText formControlName="category">
+            <label>Descripcion del producto</label>
+            <input pInputText formControlName="description">
+        </form>
+    </div>
+    <button pButton (click)="uploadButton()">Poner a la venta</button>
+</div>

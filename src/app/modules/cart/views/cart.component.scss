@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .table-info {
+    width: 80%;
+  }
+  .buy {
+    width: 20%;
+    p-card {
+      text-align: center;
+    }
+    button {
+      width: 85%;
+    }
+  }
+}
+.image {
+  width: 250px;
+  height: 200px;
+}
+@media only screen and (max-width: 720px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .table-info {
+      width: 100%;
+    }
+    .buy {
+      width: 100%;
+      p-card {
+        text-align: center;
+      }
+      button {
+        width: 85%;
+      }
+    }
+  }
+}

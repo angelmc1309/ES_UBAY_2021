@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Regístrate</h2>
+    <div class="form">
+        <form [formGroup]="newUserForm">
+            <label>Nombre</label>
+            <input pInputText formControlName="name">
+            <label>Apellidos</label>
+            <input pInputText formControlName="surname">
+            <label>Direccion</label>
+            <input pInputText formControlName="direction">
+            <label>Código Postal</label>
+            <input pInputText formControlName="cp">
+            <label>Población</label>
+            <input pInputText formControlName="city">
+            <label>Municipio</label>
+            <input pInputText formControlName="province">
+            <label>País</label>
+            <input pInputText formControlName="country">
+            <label>Username</label>
+            <input pInputText formControlName="username">
+            <label>Correo electrónico</label>
+            <input pInputText formControlName="email" type="email">
+            <label>Contraseña</label>
+            <input pInputText formControlName="password" type="password">
+            <label>Repite la contraseña</label>
+            <input pInputText formControlName="passwordRepeat" type="password">
+        </form>
+    </div>
+    <button pButton (click)="registerButton()">Registrate</button>
+</div>

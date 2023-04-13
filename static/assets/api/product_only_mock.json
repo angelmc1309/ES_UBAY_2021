@@ -1,0 +1,12 @@
+{
+    "id": "1000",
+    "code": "f230fh0g3",
+    "name": "Bamboo Watch",
+    "description": "Lujoso reloj de bambu, lo vendo porque necesito el dinero para pagar la operacion de mim padre enfermo. Por favor lo necesito. no se me ocurre mas para rellenar este ejemplo. Help.",
+    "image": "bamboo-watch.jpg",
+    "price": 65,
+    "category": "Accessories",
+    "quantity": 24,
+    "inventoryStatus": "INSTOCK",
+    "rating": 5
+}

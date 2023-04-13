@@ -1,0 +1,24 @@
+<div class="container">
+  <header>
+    <p-menubar [model]="items">
+      <ng-template pTemplate="end">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input [(ngModel)]="data" class="navInput" type="text" (input)="searchButton()" pInputText>
+        </span>
+        <button class="cartButton" type="button" pButton icon="pi pi-shopping-cart" (click)="goToCart()"></button>
+        <button *ngIf="currentUser" class="profileButton" type="button" pButton icon="pi pi-user" (click)="goToProfile()"></button>
+        <button *ngIf="currentUser" class="logInButton" type="button" pButton (click)="logOut()">Log Out</button>
+        <button *ngIf="!currentUser" class="logInButton" type="button" pButton (click)="goToLogin()">Log In</button>
+      </ng-template>
+    </p-menubar>
+  </header>
+  <!-- <div *ngIf="!isLogged && notFirstTime && !isRegistering" class="container">
+    <app-login (checkIsLogged)="showNewMenuBar($event)" (isGoingToRegister)="registerUser($event)"></app-login>
+  </div>
+  <div *ngIf="isLogged || !notFirstTime || isRegistering">
+    <router-outlet></router-outlet>
+  </div> -->
+  <router-outlet></router-outlet>
+  <ubay-footer></ubay-footer>
+</div>

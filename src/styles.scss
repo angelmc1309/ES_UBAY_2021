@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/primeng/resources/themes/nova/theme.css';
+@import '../node_modules/primeicons/primeicons.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+:root
+{
+    --dark-color: #272643;
+    --dark-light-color: #2c698d;
+    --light-color: #e3f6f5;
+    --medium-color: #bae8e8;
+    --light-second-color: #ffffff;
+
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

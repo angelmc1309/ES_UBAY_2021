@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&family=Source+Code+Pro:wght@200&display=swap');
+:host ::ng-deep p-menubar {
+    .p-menubar {
+        background: var(--light-color);
+        font-family: 'Source Code Pro', monospace;
+        .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--dark-color) !important;
+        }
+    }
+}
+.profileButton{
+    margin-left: 1rem;
+    border-radius: 2rem;
+}
+.navInput{
+    width: 60%;
+    min-width: 40rem;
+}
+.cartButton{
+    margin-left: 1rem;
+    border-radius: 2rem;
+}

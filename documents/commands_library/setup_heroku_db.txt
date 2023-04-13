@@ -1,0 +1,6 @@
+heroku login
+heroku addons:create heroku-postgresql:hobby-dev -a ubay-2021-es
+heroku config --app ubay-2021-es
+heroku run bash -a ubay-2021-es
+
+//ADD flask migrate commands

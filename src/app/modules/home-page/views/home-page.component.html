@@ -1,0 +1,73 @@
+<div class="exploreProducts">
+    <div class="crop">
+        <div class="exploreImgProducts"></div>
+        <ubay-button [data]="'Explora nuestros productos'" (click)="searchButton()"></ubay-button>
+    </div>
+</div>
+<div class="container">
+    <div class="title">
+        <h2>Ofertas del día</h2>
+        <hr>
+    </div>
+    <div class="content-section implementation carousel">
+        <div class="card">
+            <p-carousel [value]="productsCarousel" styleClass="custom-carousel" [numVisible]="4" [numScroll]="4" [circular]="true" [autoplayInterval]="3000">
+                <ng-template let-product pTemplate="item">
+                    <div class="product-item" (click)="productInformationShow(product)">
+                        <div class="product-item-content">
+                            <div class="p-mb-3">
+                                <img src="assets/product/{{getImage(product)}}" [alt]="product.name" class="product-image" />
+                            </div>
+                            <div>
+                                <h4 class="p-mb-1">{{product.name}}</h4>
+                                <h6 class="p-mt-0 p-mb-3">${{product.price}}</h6>
+                                <span [class]="'product-badge status-'+product.inventorystatus.toLowerCase()">{{product.inventorystatus}}</span>
+                                <div class="car-buttons p-mt-5">
+                                    <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-search"></p-button>
+                                    <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-star"></p-button>
+                                    <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+</div>
+<div class="parallax index"></div>
+<div class="container">
+    <div class="title">
+        <h2>Productos más buscados</h2>
+        <hr>
+    </div>
+    <div class="content-section implementation">
+        <div class="card">
+            <p-dataView #dv [value]="products" [paginator]="true" [rows]="8" layout="grid">
+                <ng-template let-product pTemplate="gridItem">
+                    <div class="col-3 xs-12">
+                        <div class="product-grid-item card" (click)="productInformationShow(product)">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"></i>
+                                    <span class="product-category">{{product.category}}</span>
+                                </div>
+                                <span [class]="'product-badge status-'+product.inventorystatus.toLowerCase()">{{product.inventorystatus}}</span>
+                            </div>
+                            <div class="product-grid-item-content">
+                                <img [src]="'assets/product/' + getImage(product)" [alt]="product.name"/>
+                                <div class="product-name">{{product.name}}</div>
+                                <div class="product-description">{{product.description}}</div>
+                                <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <span class="product-price">${{product.price}}</span>
+                                <p-button icon="pi pi-shopping-cart" [disabled]="product.inventorystatus === 'OUTOFSTOCK'" (click)="productCartAdd(product)"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+</div>

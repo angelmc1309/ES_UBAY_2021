@@ -1,0 +1,50 @@
+<div class="container">
+    <h2>INFORMACIÓN DEL PRODUCTO</h2>
+    <p-card>
+        <div class="grid">
+            <div class="col-5">
+                <img [src]="'assets/product/'+getImage(product)" alt="...">
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <div class="el1"><p-rating [ngModel]=product?.rating [readonly]="true" [cancel]="false"></p-rating></div>
+                    <div class="el1"><h1 class="card-title">{{product?.name}}</h1></div>
+                    <div class="el">
+                        <p class="card-text">{{product.description}}</p>
+                    </div>
+                    <div class="el"><h2>{{product?.price|currency:'EUR':true}}</h2></div>
+                    <div class="el"><p><small class="text-muted">QUANTITY</small></p></div>
+                    <div class="grid">
+                        <div class="col">
+                            <p-inputNumber [(ngModel)]="value1" [showButtons]="true" [min]="0" [max]="product?.quantity!"></p-inputNumber>
+                        </div>
+                        <div class="col">
+                            <button [class]="inStockButton(product.inventorystatus)" [disabled]="product?.quantity==0" (click)="productCartAdd(product,value1)">{{inStockButtonString(product.inventorystatus)}}</button>
+                        </div>
+                    </div>
+                    <div [class]="inStock(product.inventorystatus)">
+                                {{product.inventorystatus}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div>
+<div class="container">
+    <h2>Ofertas del día</h2>
+    <hr>
+    <div class="relatedProducts">
+            <p-carousel [value]="productsCarousel" styleClass="custom-carousel" [numVisible]="4" [numScroll]="4" [circular]="true">
+                <ng-template let-product pTemplate="item">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="assets/product/{{getImage(product)}}" [alt]="product?.name" class="product-image" />
+                                <button class="btnOnProducts" (click)="productInformationShow(product)">Explora este producto</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+        </p-carousel>
+    </div>
+</div>

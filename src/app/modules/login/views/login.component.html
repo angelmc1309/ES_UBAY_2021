@@ -1,0 +1,23 @@
+<div class="card">
+    <p-card styleClass="p-card-shadow">
+        <div class="flex imgShaped">
+            <div class="col-7 Imginfo">
+                <div class="secondImg"></div>
+            </div>
+            <div class="col-5 loginFormCol">
+                <div class="col-12">
+                    <h2><strong>UBAY</strong></h2>
+                    <h3><strong>LOGIN</strong></h3>
+                    <form form [formGroup]="loginForm">
+                        <label>Username or name</label>
+                        <input pInputText formControlName="username">
+                        <label>Password</label>
+                        <input pInputText formControlName="password" type="password">
+                    </form>
+                    <button class="p-button-rounded" pButton (click)="clickButton()">Entrar</button>
+                </div>
+                <button class="register" (click)="registerUser()">Regisrate aquí</button>
+            </div>
+        </div>
+    </p-card>
+</div>
